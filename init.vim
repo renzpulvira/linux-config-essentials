@@ -291,8 +291,8 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 
 " Fuzzy finder
-nnoremap <silent> <space>ff :<C-u>Files<Cr>
-nnoremap <silent> <space>fb :<C-u>Buffers<Cr>
+nnoremap <silent> <space>p :<C-u>Files<Cr>
+nnoremap <silent> <space>b :<C-u>Buffers<Cr>
 
 "Saving & exiting a file
 nnoremap <silent> <space>w :<C-u>w<Cr>
@@ -324,3 +324,46 @@ nnoremap H gT
 nnoremap L gt
 autocmd BufEnter NERD_tree_* | execute 'normal R'
 
+nnoremap <space>l <C-w>l
+nnoremap <space>h <C-w>h
+nnoremap <space>ff /
+imap ii <Esc>
+
+
+let g:fzf_buffers_jump = 1
+let g:fzf_action = {
+\ 'enter': 'FzfCustomOpen',
+\ 'ctrl-t': 'tab split',
+\ 'ctrl-l': 'vsplit' }
+
+function! WhichWindowId(filename)
+    let buffername = bufname(a:filename)
+    if buffername == ""
+        return 0
+    endif
+    let buffernumber = bufnr(buffername)
+    let windows = win_findbuf(buffernumber)
+    if len(windows) >=1
+        return get(windows,0) 
+    endif
+    return 0
+endfunction
+
+function! s:fzfOpen(...)
+    if len(a:000)==0
+        return
+    endif
+    let windowId = WhichWindowId(a:1)
+    if windowId>0
+        execute 'call win_gotoid('.windowId.')'
+    else
+        if &modified
+            execute 'tabnew '.join(a:000)
+        else
+        "open in the same window
+        execute 'edit '.join(a:000)
+        endif
+  endif
+endfunction
+
+command!  -nargs=* FzfCustomOpen call s:fzfOpen(<f-args>)
