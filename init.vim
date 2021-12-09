@@ -12,6 +12,8 @@ set signcolumn=yes
 set background=dark
 set backspace=indent,eol,start
 set laststatus=2
+"set statusline=%f
+set statusline=%f\ \ %y%m%r%h%w%=[%l,%v]\ \ \ \ \ \ [%L,%p%%]\ %n
 
 set incsearch
 set hlsearch
@@ -129,6 +131,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
+  \ 'coc-styled-components',
   \ ]
 
 nmap <F2> <Plug>(coc-rename)
@@ -306,17 +309,18 @@ nnoremap<silent> <space>fx :<C-u>nohlsearch \| match none \| 2match none \| call
 
 
 "Tab Shortcuts
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
+nnoremap <silent> <space>1 1gt<CR>
+noremap <silent> <space>2 2gt<CR> 
+noremap <silent> <space>3 3gt<CR> 
+noremap <silent> <space>4 4gt<CR> 
+noremap <silent> <space>5 5gt<CR> 
+noremap <silent> <space>6 6gt<CR> 
+noremap <silent> <space>7 7gt<CR> 
+noremap <silent> <space>8 8gt<CR> 
+noremap <silent> <space>9 9gt<CR> 
+noremap <silent> <leader>0 :tablast<cr>
 
 nnoremap H gT
 nnoremap L gt
 autocmd BufEnter NERD_tree_* | execute 'normal R'
+

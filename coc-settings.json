@@ -10,7 +10,8 @@
     "emmet",
     "css",
     "json",
-    "javascriptreact"
+    "javascriptreact",
+    "styled-components"
   ],
   "emmet.showExpandedAbbreviation": "always",
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
