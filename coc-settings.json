@@ -1,0 +1,19 @@
+{
+  "eslint.run": "onSave",
+  "eslint.format.enable": true,
+  "suggest.noselect": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "php",
+    "html",
+    "scss",
+    "emmet",
+    "css",
+    "json",
+    "javascriptreact"
+  ],
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+  "snippets.ultisnips.usePythonx": false,
+  "intelephense.diagnostics.enable": false
+}
