@@ -13,7 +13,7 @@ set background=dark
 set backspace=indent,eol,start
 set laststatus=2
 "set statusline=%f
-set statusline=%f\ \ %y%m%r%h%w%=[%l,%v]\ \ \ \ \ \ [%L,%p%%]\ %n
+"set statusline=%f\ \ %y%m%r%h%w%=[%l,%v]\ \ \ \ \ \ [%L,%p%%]\ %n
 
 set incsearch
 set hlsearch
@@ -23,8 +23,8 @@ call plug#begin()
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
@@ -367,3 +367,8 @@ function! s:fzfOpen(...)
 endfunction
 
 command!  -nargs=* FzfCustomOpen call s:fzfOpen(<f-args>)
+
+let g:airline#extensions#tabline#enabled = 1
+
+nnoremap <space>h :w !node<CR>
+nnoremap <space><space>h :w !python3<CR>
